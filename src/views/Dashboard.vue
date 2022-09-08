@@ -7,20 +7,16 @@
 import { mapState, mapActions } from "pinia";
 import taskStore from "@/store/task";
 export default {
-  name: "Dashboard",
+  name: "DashboardView",
   computed: {
-    ...mapState(taskStore, ["task"]),
+    ...mapState(taskStore, ["tasks"]),
   },
   methods: {
     ...mapActions(taskStore, ["fetchTasks"]),
-    createTask() {
-      const { data } = await supabase
-        .from("cities")
-        .insert([{ name: "The Shire", country_id: 554 }]);
-    },
   },
   created() {
     this.fetchTasks();
   },
 };
 </script>
+

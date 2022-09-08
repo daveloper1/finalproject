@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Login Page</h1>
-    <button @click="handleSignUp">Sign Up Bruh</button>
+    <SignIn />
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import { mapState, mapActions } from "pinia";
 import userStore from "@/store/user";
 import user from "@/store/user";
+import SignIn from "./components/SignIn.vue";
 
 export default {
   name: "AuthView",
