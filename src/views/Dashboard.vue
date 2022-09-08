@@ -1,26 +1,28 @@
 <template>
   <div class="about">
     <h1>This is the dashboard page</h1>
+    <Logout />
   </div>
 </template>
 <script>
 import { mapState, mapActions } from "pinia";
 import taskStore from "@/store/task";
+import Logout from   "../components/Logout.vue"
+
 export default {
-  name: "Dashboard",
+  name: "DashboardView",
+  components: {
+    Logout: Logout,
+  },
   computed: {
-    ...mapState(taskStore, ["task"]),
+    ...mapState(taskStore, ["tasks"]),
   },
   methods: {
     ...mapActions(taskStore, ["fetchTasks"]),
-    createTask() {
-      const { data } = await supabase
-        .from("cities")
-        .insert([{ name: "The Shire", country_id: 554 }]);
-    },
   },
   created() {
     this.fetchTasks();
   },
 };
 </script>
+
