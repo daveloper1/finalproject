@@ -2,27 +2,32 @@
   <div class="about">
     <h1>This is the dashboard page</h1>
     <Logout />
+    <ShowTasks />
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "pinia";
+import { mapActions } from "pinia";
 import taskStore from "@/store/task";
-import Logout from   "../components/Logout.vue"
+import Logout from "../components/Logout.vue";
+import ShowTasks from "../components/ShowTasks.vue";
 
 export default {
   name: "DashboardView",
   components: {
     Logout: Logout,
+    ShowTasks: ShowTasks,
   },
-  computed: {
-    ...mapState(taskStore, ["tasks"]),
-  },
+
   methods: {
     ...mapActions(taskStore, ["fetchTasks"]),
   },
   created() {
-    this.fetchTasks();
+    try {
+      this.fetchTasks();
+
+    } catch (error) {
+      console.error("Error de tareas>>", error); // investigar ventana modal
+    }
   },
 };
 </script>
-
