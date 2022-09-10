@@ -4,7 +4,6 @@
       <tr class="table-title">
         <th>Task</th>
         <th>Status</th>
-        <th><button @click="handleLogin">Create task</button></th>
       </tr>
       <tr v-for="task in tasks" :key="task.id">
         <td><input type="checkbox" /></td>
