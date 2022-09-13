@@ -25,9 +25,7 @@ export default {
         email: document.getElementById("login-user-email").value,
         password: document.getElementById("login-user-password").value,
       };
-      console.log("email>>>", userData.email)
       this.signInWithEmail(userData.email, userData.password);
-      
     },
   },
 };

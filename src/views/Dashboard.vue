@@ -20,7 +20,6 @@ export default {
     ShowTasks: ShowTasks,
     CreateTask: CreateTask,
   },
-
   methods: {
     ...mapActions(taskStore, ["fetchTasks"]),
   },

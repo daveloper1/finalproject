@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>Login Page</h1>
+    <h2>Sign Up</h2>
     <SignUp />
     <h2>LOGIN</h2>
     <Login />
@@ -25,23 +26,6 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ["signUp"]),
-    /*handleSignUp() {
-      const userData = {
-        email: "",
-        password: "",
-      };
-      this.signUp(userData.email, userData.password);
-    },*/
-  },
-  watch: {
-    user() {
-      if (this.user) {
-       //console.log(this.user);
-        this.$router.push({ path: "/" });
-      } else {
-        this.$router.push({ path: "/auth" });
-      }
-    },
   },
 };
 </script>

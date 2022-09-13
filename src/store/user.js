@@ -23,7 +23,7 @@ export default defineStore("userStore", {
       }
       if (user) this.user = user;
     },
-    async signUp(name, email, password) {
+    async signUp({ dispatch }, name, email, password) {
       const { user, error } = await supabase.auth.signUp({
         name,
         email,
@@ -36,7 +36,7 @@ export default defineStore("userStore", {
     async signOut() {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      console.log("done!");
+      this.user = null;
     },
   },
   persist: {
