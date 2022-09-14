@@ -27,7 +27,7 @@ export default {
     try {
       this.fetchTasks();
     } catch (error) {
-      console.error("Error de tareas>>", error); // investigar ventana modal
+      console.error("Error", error.message); // investigar ventana modal
     }
   },
 };

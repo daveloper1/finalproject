@@ -7,7 +7,7 @@
         <th>Task</th>
         <th>Action</th>
       </tr>
-      <tr v-for="task in taskShown" :key="task.id">
+      <tr v-for="task in tasks" :key="task.id">
         <td>
           <input
             @click="handleEditStatus(task.is_complete, task.id)"
@@ -40,7 +40,7 @@ export default {
     ...mapState(taskStore, ["tasks"]),
   },
   methods: {
-    ...mapActions(taskStore, ["deleteTask", "editStatus","editTitle"]),
+    ...mapActions(taskStore, ["deleteTask", "editStatus", "editTitle"]),
 
     handleDeleteTask(taskId) {
       this.deleteTask(taskId);
@@ -60,5 +60,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

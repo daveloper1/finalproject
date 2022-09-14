@@ -9,7 +9,7 @@ import { mapActions } from "pinia";
 import userStore from "@/store/user";
 
 export default {
-  name: "Logout",
+  name: "UserLogout",
   methods: {
     ...mapActions(userStore, ["signOut"]),
     async handleLogout() {
@@ -19,5 +19,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
