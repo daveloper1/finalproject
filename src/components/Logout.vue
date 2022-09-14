@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="handleLogout">Logout</button>
+    <button @click.prevent="handleLogout">Logout</button>
   </div>
 </template>
 
@@ -9,17 +9,14 @@ import { mapActions } from "pinia";
 import userStore from "@/store/user";
 
 export default {
-  name: "Logout",
+  name: "UserLogout",
   methods: {
     ...mapActions(userStore, ["signOut"]),
-    handleLogout() {
-      this.signOut();
-      alert("Session closed successfully");
-      window.location.reload();
+    async handleLogout() {
+      await this.signOut();
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
