@@ -13,7 +13,11 @@ export default {
   methods: {
     ...mapActions(userStore, ["signOut"]),
     async handleLogout() {
-      await this.signOut();
+      try {
+        await this.signOut();
+      } catch (error) {
+        alert("Error signing out:", error.message);
+      }
     },
   },
 };

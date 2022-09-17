@@ -19,9 +19,13 @@ export default defineStore("tasks", {
     },
     async insertTask(newTitle, newStatus) {
       const userStore = useUserStore();
-      const { data, error } = await supabase
-        .from("tasks")
-        .insert([{ title: newTitle, user_id: userStore.user.id, is_complete: newStatus }]);
+      const { data, error } = await supabase.from("tasks").insert([
+        {
+          title: newTitle,
+          user_id: userStore.user.id,
+          is_complete: newStatus,
+        },
+      ]);
       if (error) throw error;
     },
     async deleteTask(taskId) {

@@ -1,5 +1,7 @@
 <template>
-  <nav v-if="user !== null"><router-link to="/">Home</router-link> |</nav>
+    <h1>Notice Task</h1>
+  <nav v-if="user !== null">
+    <router-link to="/">Home</router-link></nav>
   <router-view />
 </template>
 

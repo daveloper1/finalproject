@@ -17,9 +17,13 @@
       v-model="userPassword"
       id="signup-user-password"
       placeholder="Enter a password"
-      v-on:keyup.enter="signUp(this.userName, this.userEmail, this.userPassword)"
+      v-on:keyup.enter="
+        signUp(this.userName, this.userEmail, this.userPassword)
+      "
     />
-    <button @click="signUp(this.userName, this.userEmail, this.userPassword)">Submit</button>
+    <button @click="signUp(this.userName, this.userEmail, this.userPassword)">
+      Submit
+    </button>
   </div>
 </template>
 

@@ -43,18 +43,26 @@ export default {
     ...mapActions(taskStore, ["deleteTask", "editStatus", "editTitle"]),
 
     handleDeleteTask(taskId) {
-      this.deleteTask(taskId);
+      try {
+        this.deleteTask(taskId);
+      } catch (error) {
+        alert("Error deleting the task:", error.message);
+      }
     },
 
     handleEditStatus(status, taskID) {
       try {
         this.editStatus(!status, taskID);
       } catch (error) {
-        alert("Error: ", error.message);
+        alert("Error editing the task status: ", error.message);
       }
     },
     handleEditTitle(newTitle, taskID) {
-      this.editTitle(newTitle, taskID);
+      try {
+        this.editTitle(newTitle, taskID);
+      } catch (error) {
+        alert("Error editing the task title:", error.message);
+      }
     },
   },
 };
