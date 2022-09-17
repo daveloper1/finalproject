@@ -1,5 +1,5 @@
 // /store/task.js
-
+/* eslint-disable */
 import { defineStore } from "pinia";
 import supabase from "../supabase/index";
 import useUserStore from "@/store/user";

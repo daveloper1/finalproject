@@ -1,7 +1,9 @@
 <template>
-    <h1>Notice Task</h1>
   <nav v-if="user !== null">
-    <router-link to="/">Home</router-link></nav>
+    <router-link to="/">Home</router-link>
+  </nav>
+  <h1 class="app-title" v-else>Notice Task</h1>
+
   <router-view />
 </template>
 
@@ -43,20 +45,25 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  width: 100%;
 }
-
-nav {
-  padding: 30px;
+body {
+  margin: 0;
 }
-
-nav a {
+h1 {
   font-weight: bold;
   color: #2c3e50;
+  text-align: center;
+}
+nav {
+  position: fixed;
+}
+.app-title {
+  position: fixed;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.text-area {
+  font-size: 17px;
 }
 </style>
