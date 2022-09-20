@@ -1,9 +1,8 @@
 <template>
-  <nav v-if="user !== null">
-    <router-link to="/">Home</router-link>
+  <nav class="app-navbar" :class="{ 'login-navbar': user === null }">
+    <router-link v-if="user !== null" to="/"></router-link>
+    <h1 class="app-title">Notice Task</h1>
   </nav>
-  <h1 class="app-title" v-else>Notice Task</h1>
-
   <router-view />
 </template>
 
@@ -51,16 +50,24 @@ export default {
 body {
   margin: 0;
 }
-h1 {
-  font-weight: bold;
-  color: #2c3e50;
-  text-align: center;
-}
-nav {
-  position: fixed;
+.app-navbar {
+  width: 100vw;
+  height: 80px;
+  padding-left: 25px;
+  border: solid;
 }
 .app-title {
+  width: 100vw;
+  font-weight: bold;
+  font-size: 30px;
+  color: #2c3e50;
+}
+.app-navbar.login-navbar {
   position: fixed;
+  padding: 0;
+  margin-top: 50px;
+  text-align: center;
+  height: 100px;
 }
 
 .text-area {

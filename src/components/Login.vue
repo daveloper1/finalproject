@@ -73,6 +73,9 @@ export default {
   padding-left: 15px;
   border-radius: 5px;
 }
+.input-control:active {
+  border: yellow;
+}
 .input-btn {
   width: 250px;
   height: 25px;

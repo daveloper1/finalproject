@@ -50,8 +50,13 @@ export default {
   left: 50px;
   width: 80%;
   height: 500px;
-  background-color: rgb(246, 209, 209, 0.8);
   background-color: rgba(176, 176, 176, 0.8);
+  background: linear-gradient(
+    transparent -8%,
+    #adadad,
+    #707070,
+    transparent 106%
+  );
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;

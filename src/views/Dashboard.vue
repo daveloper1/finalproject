@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is the dashboard page</h1>
+  <div class="main-dashboard">
+    <h2 class="dashboard-title">Welcome ALV</h2>
     <Logout />
     <ShowTasks />
     <CreateTask />
@@ -32,3 +32,12 @@ export default {
   },
 };
 </script>
+<style>
+.main-dashboard {
+  background-color: beige;
+  border: solid;
+}
+.dashboard-title {
+  text-align: center;
+}
+</style>
