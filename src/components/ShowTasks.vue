@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tasks-container">
     <table class="table-container">
       <tr class="table-title">
         <th>Status</th>
@@ -7,13 +7,12 @@
         <th>Task</th>
         <th>Action</th>
       </tr>
-      <tr v-for="task in tasks" :key="task.id">
+      <tr class="card" v-for="task in tasks" :key="task.id">
         <td>
           <input
             @click="handleEditStatus(task.is_complete, task.id)"
             type="checkbox"
             v-model="task.is_complete"
-            v-bind:id="task.is_complete"
           />
         </td>
         <!-- cuando se cambie el estado, crear metodo y pasarle la task para que cambie su estado -->
@@ -68,4 +67,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.tasks-container {
+  border: solid purple;
+  height: 80vh;
+}
+.table-container {
+  border: solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+}
+.card {
+  height: 150px;
+  border: solid blue;
+}
+</style>

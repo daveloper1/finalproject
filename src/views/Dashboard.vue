@@ -1,6 +1,6 @@
 <template>
   <div class="main-dashboard">
-    <h2 class="dashboard-title">Welcome ALV</h2>
+    <h2 class="dashboard-title">Welcome</h2>
     <Logout />
     <ShowTasks />
     <CreateTask />
@@ -34,7 +34,7 @@ export default {
 </script>
 <style>
 .main-dashboard {
-  background-color: beige;
+  background-color: #f1f1f1;
   border: solid;
 }
 .dashboard-title {

@@ -14,9 +14,7 @@
       id="task-status"
     />
 
-    <button @click="handleInsertTask(task.title, task.isComplete)">
-      Create task
-    </button>
+    <button @click="handleInsertTask()">Create task</button>
   </div>
 </template>
 
@@ -34,13 +32,14 @@ export default {
   },
   methods: {
     ...mapActions(taskStore, ["insertTask"]),
-    handleInsertTask(newTitle, newTaskStatus) {
+    handleInsertTask() {
       try {
-        this.insertTask(newTitle, newTaskStatus);
+        this.insertTask(this.title, this.isComplete);
+        this.title = "";
+        this.isComplete = false;
       } catch (error) {
         alert("Error creating the task:", error.message);
       }
-      this.insertTask(newTitle, newTaskStatus);
     },
   },
 };
