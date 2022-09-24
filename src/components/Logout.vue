@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button @click.prevent="handleLogout">Logout</button>
+    <b-button variant="outline-primary" @click.prevent="handleLogout"
+      >Logout</b-button
+    >
   </div>
 </template>
 

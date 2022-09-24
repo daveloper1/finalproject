@@ -5,13 +5,13 @@ import Dashboard from "../views/Dashboard.vue";
 const routes = [
   {
     path: "/",
-    name: "Dashboard",
-    component: Dashboard,
-  },
-  {
-    path: "/auth",
     name: "auth",
     component: LoginPage,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
   },
 ];
 

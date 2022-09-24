@@ -1,12 +1,12 @@
 <template>
   <div class="tasks-container">
     <table class="table-container">
-      <tr class="table-title">
+      <!--<tr class="table-title">
         <th>Status</th>
         <th>ID</th>
         <th>Task</th>
         <th>Action</th>
-      </tr>
+      </tr>-->
       <tr class="card" v-for="task in tasks" :key="task.id">
         <td>
           <input
@@ -15,15 +15,13 @@
             v-model="task.is_complete"
           />
         </td>
-        <!-- cuando se cambie el estado, crear metodo y pasarle la task para que cambie su estado -->
-        <td>{{ task.id }}</td>
         <td class="task-title">
           <input
             v-model="task.title"
             @change="handleEditTitle(task.title, task.id)"
           />
         </td>
-        <td><button @click="handleDeleteTask(task.id)">Delete task</button></td>
+        <td><button @click="handleDeleteTask(task.id)">Delete</button></td>
       </tr>
     </table>
   </div>
@@ -69,18 +67,24 @@ export default {
 
 <style>
 .tasks-container {
-  border: solid purple;
-  height: 80vh;
+  height: 700px;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
 }
 .table-container {
-  border: solid red;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 80%;
+  border: solid rgb(179, 179, 179);
 }
 .card {
-  height: 150px;
-  border: solid blue;
+  height: 70px;
+  margin-top: 20px;
+  width: 270px;
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff6e6;
+  border-radius: 5px;
 }
 </style>

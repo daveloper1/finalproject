@@ -6,6 +6,7 @@
       name="title"
       id="task-title"
       placeholder="Task"
+      v-on:keyup.enter="handleInsertTask()"
     />
     <input
       type="checkbox"
