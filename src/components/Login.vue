@@ -1,7 +1,7 @@
 <template>
-  <div class="input-group">
+  <div class="login-info">
     <input
-      class="input-control text-area"
+      class="input-box text-area"
       type="email"
       v-model="userEmail"
       name="email"
@@ -10,7 +10,7 @@
       autocomplete="on"
     />
     <input
-      class="input-control text-area"
+      class="input-box text-area"
       type="password"
       v-model="userPassword"
       v-on:keyup.enter="handleSignIn()"
@@ -19,7 +19,7 @@
       placeholder="Enter a password"
       autocomplete="on"
     />
-    <button class="input-control text-area input-btn" @click="handleSignIn()">
+    <button class="btn btn-primary input-box text-area" @click="handleSignIn()">
       Login
     </button>
     <div class="show-error" v-if="errorSignIn">{{ this.errorSignIn }}</div>
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style>
-.input-group {
+.login-info {
   display: flex;
   width: 90%;
   height: 100%;
@@ -67,18 +67,13 @@ export default {
   align-items: center;
   justify-content: space-around;
 }
-.input-control {
-  width: 250px;
-  height: 25px;
-  padding-left: 15px;
+.input-box {
+  margin: 0 auto;
+  width: 90%;
+  padding-left: 5%;
   border-radius: 5px;
 }
 .input-control:active {
   border: yellow;
-}
-.input-btn {
-  width: 250px;
-  height: 25px;
-  box-sizing: content-box;
 }
 </style>

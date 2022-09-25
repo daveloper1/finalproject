@@ -1,6 +1,6 @@
 <template>
   <div class="main-dashboard">
-    <h2 class="dashboard-title">Welcome</h2>
+    <h2 class="dashboard-title">Your tasks</h2>
     <ShowTasks />
     <CreateTask />
   </div>
@@ -32,9 +32,13 @@ export default {
 <style>
 .main-dashboard {
   background-color: #f1f1f1;
-  border: solid;
+  height: calc(100vh - 80px);
+  overflow: hidden;
 }
 .dashboard-title {
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 </style>

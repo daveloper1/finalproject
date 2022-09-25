@@ -1,29 +1,47 @@
 <template>
   <div class="tasks-container">
-    <table class="table-container">
-      <!--<tr class="table-title">
-        <th>Status</th>
-        <th>ID</th>
-        <th>Task</th>
-        <th>Action</th>
-      </tr>-->
-      <tr class="card" v-for="task in tasks" :key="task.id">
-        <td>
-          <input
-            @click="handleEditStatus(task.is_complete, task.id)"
-            type="checkbox"
-            v-model="task.is_complete"
-          />
-        </td>
-        <td class="task-title">
-          <input
-            v-model="task.title"
-            @change="handleEditTitle(task.title, task.id)"
-          />
-        </td>
-        <td><button @click="handleDeleteTask(task.id)">Delete</button></td>
-      </tr>
-    </table>
+    <div class="card text-bg-light mb-3" v-for="task in tasks" :key="task.id">
+      <div class="card-header">
+        <input
+          type="checkbox"
+          class="btn-check"
+          :id="task.id"
+          @click="handleEditStatus(task.is_complete, task.id)"
+          autocomplete="off"
+          v-model="task.is_complete"
+        />
+        <label
+          v-if="task.is_complete"
+          class="btn btn-outline-primary"
+          :for="task.id"
+          >DONE!</label
+        >
+        <label v-else class="btn btn-outline-primary" :for="task.id"
+          >Pending</label
+        ><br />
+        <input
+          v-model="task.title"
+          @change="handleEditTitle(task.title, task.id)"
+          data-bs-toggle="collapse"
+          data-bs-target="#taskId"
+          aria-expanded="false"
+          aria-controls="taskId"
+        />
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          @click="handleDeleteTask(task.id)"
+        ></button>
+      </div>
+      <div class="card-body collapse" id="taskId">
+        <h5 class="card-title">Light card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,24 +85,15 @@ export default {
 
 <style>
 .tasks-container {
-  height: 700px;
+  height: calc(100% - 10rem);
   overflow-y: scroll;
   display: flex;
-  justify-content: center;
-}
-.table-container {
-  border: solid rgb(179, 179, 179);
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 .card {
-  height: 70px;
-  margin-top: 20px;
-  width: 270px;
-  display: flex;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #fff6e6;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 18rem;
 }
 </style>

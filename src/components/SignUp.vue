@@ -1,7 +1,7 @@
 <template>
-  <div class="input-group">
+  <div class="login-info">
     <input
-      class="input-control text-area"
+      class="input-box text-area"
       type="text"
       v-model="userName"
       id="signup-user-name"
@@ -9,7 +9,7 @@
       autocomplete="on"
     />
     <input
-      class="input-control text-area"
+      class="input-box text-area"
       type="text"
       v-model="userEmail"
       id="signup-user-email"
@@ -17,7 +17,7 @@
       autocomplete="on"
     />
     <input
-      class="input-control text-area"
+      class="input-box text-area"
       type="password"
       v-model="userPassword"
       id="signup-user-password"
@@ -28,7 +28,7 @@
       autocomplete="on"
     />
     <button
-      class="input-control text-area input-btn"
+      class="btn btn-primary input-box text-area"
       @click="signUp(this.userName, this.userEmail, this.userPassword)"
     >
       Submit
