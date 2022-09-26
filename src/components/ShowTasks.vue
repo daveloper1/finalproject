@@ -16,14 +16,19 @@
           :for="task.id"
           >DONE!</label
         >
-        <label v-else class="btn btn-outline-primary" :for="task.id"
+        <label
+          v-else
+          class="btn btn-outline-primary"
+          :class="{ 'btn-pending': !task.is_complete }"
+          :for="task.id"
           >Pending</label
         ><br />
         <input
+          class="task-title"
           v-model="task.title"
           @change="handleEditTitle(task.title, task.id)"
           data-bs-toggle="collapse"
-          data-bs-target="#taskId"
+          data-bs-target=".taskId"
           aria-expanded="false"
           aria-controls="taskId"
         />
@@ -34,11 +39,10 @@
           @click="handleDeleteTask(task.id)"
         ></button>
       </div>
-      <div class="card-body collapse" id="taskId">
-        <h5 class="card-title">Light card title</h5>
+      <div class="card-body collapse taskId">
+        <h5 class="card-title">Task description</h5>
         <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {{ task.description }}
         </p>
       </div>
     </div>
@@ -85,7 +89,7 @@ export default {
 
 <style>
 .tasks-container {
-  height: calc(100% - 10rem);
+  height: calc(100% - 20rem);
   overflow-y: scroll;
   display: flex;
   justify-content: flex-start;
@@ -94,6 +98,21 @@ export default {
 }
 .card {
   width: 100%;
-  max-width: 18rem;
+  max-width: 23rem;
+}
+.btn-pending {
+  background-color: rgb(118 118 118 / 60%);
+  color: white;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.btn-pending,
+.btn-outline-primary {
+  width: 85px;
 }
 </style>
