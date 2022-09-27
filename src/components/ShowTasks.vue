@@ -4,7 +4,7 @@
       Sort by status
     </button>
     <button class="btn btn-primary text-area" @click="sortTasksAlpha">
-      Sort
+      Sort {{ sortBtnText }}
     </button>
   </div>
   <div class="tasks-container">
@@ -67,6 +67,7 @@ export default {
     return {
       sortStatus: 1,
       sortAlpha: 1,
+      sortBtnText: "A-Z",
     };
   },
   computed: {
@@ -114,15 +115,22 @@ export default {
       let stat = this.sortAlpha;
 
       this.tasks.sort(function (a, b) {
-        if (a.title < b.title) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
           return -stat;
         }
-        if (a.title > b.title) {
+        if (a.title.toLowerCase() > b.title.toLowerCase()) {
           return stat;
         }
         return 0;
       });
       this.sortAlpha = -this.sortAlpha;
+      if (this.sortAlpha == "1") {
+        this.sortBtnText = "A-Z";
+      } else if (this.sortAlpha == "-1") {
+        this.sortBtnText = "Z-A";
+      } else {
+        alert("Some error has occurred");
+      }
     },
   },
 };
@@ -178,12 +186,12 @@ export default {
     width: 95%;
     max-width: 95%;
     margin: 0 auto;
-    height: calc(100% - 40rem);
+    height: calc(100% - 45vh);
     display: flex;
     flex-direction: row;
     align-content: flex-start;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: flex-start;
     overflow-y: scroll;
   }
