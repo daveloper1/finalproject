@@ -28,7 +28,7 @@
           v-model="task.title"
           @change="handleEditTitle(task.title, task.id)"
           data-bs-toggle="collapse"
-          data-bs-target=".taskId"
+          data-bs-target="#taskId"
           aria-expanded="false"
           aria-controls="taskId"
         />
@@ -39,7 +39,7 @@
           @click="handleDeleteTask(task.id)"
         ></button>
       </div>
-      <div class="card-body collapse taskId">
+      <div class="card-body collapse" id="taskId">
         <h5 class="card-title">Task description</h5>
         <p class="card-text">
           {{ task.description }}
@@ -114,5 +114,8 @@ export default {
 .btn-pending,
 .btn-outline-primary {
   width: 85px;
+}
+
+@media only screen and (max-width: 844px) {
 }
 </style>
