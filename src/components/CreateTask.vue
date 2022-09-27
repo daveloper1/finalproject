@@ -1,24 +1,19 @@
 <template>
   <div class="newtask-container">
-    <div class="card card-header">
+    <div class="card card-header newtask-card">
       <input
         class="task-title"
         type="text"
         v-model="title"
         name="title"
-        id="task-title"
         placeholder="Task"
         v-on:keyup.enter="handleInsertTask()"
-        data-bs-toggle="collapse"
-        data-bs-target="#task-description"
-        aria-expanded="false"
-        aria-controls="task-description"
       />
       <button @click="handleInsertTask()">Create task</button>
     </div>
 
     <div class="card text-bg-light mb-3">
-      <div class="card-body collapse newtask-description" id="task-description">
+      <div class="card-body newtask-description">
         <h5 class="card-title">Description</h5>
         <input
           v-model="description"
@@ -80,5 +75,11 @@ export default {
 .task-title {
   box-sizing: border-box;
   padding-left: 10px;
+}
+@media only screen and (min-width: 415px) {
+  .newtask-container {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 </style>

@@ -63,4 +63,10 @@ export default {
   padding: 20px;
   border-radius: 15px;
 }
+
+@media only screen and (min-width: 844px) {
+  .login-container {
+    width: 40%;
+  }
+}
 </style>

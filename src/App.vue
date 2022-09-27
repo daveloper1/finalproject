@@ -81,6 +81,4 @@ body {
 .text-area {
   font-size: 17px;
 }
-.logout-btn {
-}
 </style>

@@ -1,4 +1,12 @@
 <template>
+  <div class="action-buttons">
+    <button class="btn btn-primary text-area" @click="sortTasksByStatus">
+      Sort by status
+    </button>
+    <button class="btn btn-primary text-area" @click="sortTasksAlpha">
+      Sort
+    </button>
+  </div>
   <div class="tasks-container">
     <div class="card text-bg-light mb-3" v-for="task in tasks" :key="task.id">
       <div class="card-header">
@@ -28,9 +36,9 @@
           v-model="task.title"
           @change="handleEditTitle(task.title, task.id)"
           data-bs-toggle="collapse"
-          data-bs-target="#taskId"
+          :data-bs-target="'#t' + task.id.toString()"
           aria-expanded="false"
-          aria-controls="taskId"
+          :aria-controls="'t' + task.id.toString()"
         />
         <button
           type="button"
@@ -39,7 +47,7 @@
           @click="handleDeleteTask(task.id)"
         ></button>
       </div>
-      <div class="card-body collapse" id="taskId">
+      <div class="card-body collapse" :id="'t' + task.id.toString()">
         <h5 class="card-title">Task description</h5>
         <p class="card-text">
           {{ task.description }}
@@ -55,6 +63,12 @@ import taskStore from "@/store/task";
 
 export default {
   name: "ShowTasks",
+  data() {
+    return {
+      sortStatus: 1,
+      sortAlpha: 1,
+    };
+  },
   computed: {
     ...mapState(taskStore, ["tasks"]),
   },
@@ -83,11 +97,46 @@ export default {
         alert("Error editing the task title:", error.message);
       }
     },
+    sortTasksByStatus() {
+      let stat = this.sortStatus;
+      this.tasks.sort(function (a, b) {
+        if (a.is_complete < b.is_complete) {
+          return stat * -1;
+        }
+        if (a.is_complete > b.is_complete) {
+          return stat;
+        }
+        return 0;
+      });
+      this.sortStatus = -this.sortStatus;
+    },
+    sortTasksAlpha() {
+      let stat = this.sortAlpha;
+
+      this.tasks.sort(function (a, b) {
+        if (a.title < b.title) {
+          return -stat;
+        }
+        if (a.title > b.title) {
+          return stat;
+        }
+        return 0;
+      });
+      this.sortAlpha = -this.sortAlpha;
+    },
   },
 };
 </script>
 
 <style>
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}
 .tasks-container {
   height: calc(100% - 20rem);
   overflow-y: scroll;
@@ -115,7 +164,32 @@ export default {
 .btn-outline-primary {
   width: 85px;
 }
+.task-title {
+  width: 55%;
+}
 
-@media only screen and (max-width: 844px) {
+@media only screen and (min-width: 415px) {
+  .action-buttons {
+    margin: 0 auto;
+    width: 60%;
+    margin-bottom: 3%;
+  }
+  .tasks-container {
+    width: 95%;
+    max-width: 95%;
+    margin: 0 auto;
+    height: calc(100% - 40rem);
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    overflow-y: scroll;
+  }
+  .card {
+    width: 45%;
+    margin-left: 3%;
+  }
 }
 </style>
