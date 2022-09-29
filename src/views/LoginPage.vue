@@ -48,7 +48,7 @@ export default {
   display: flex;
   top: 88px;
   left: 50px;
-  width: 80%;
+  width: 315px;
   height: 500px;
   background-color: rgba(176, 176, 176, 0.8);
   background: linear-gradient(
@@ -66,7 +66,7 @@ export default {
 
 @media only screen and (min-width: 844px) {
   .login-container {
-    width: 40%;
+    width: 400px;
   }
 }
 </style>
