@@ -106,22 +106,9 @@ export default {
       try {
         this.editDescription(newDescription, taskID);
       } catch (error) {
-        alert("Error editing the task title:", error.message);
+        alert("Error editing the task description:", error.message);
       }
     },
-    /*sortTasksByStatus() {
-      let stat = this.sortStatus;
-      this.tasks.sort(function (a, b) {
-        if (a.is_complete < b.is_complete) {
-          return stat * -1;
-        }
-        if (a.is_complete > b.is_complete) {
-          return stat;
-        }
-        return 0;
-      });
-      this.sortStatus = -this.sortStatus;
-    },*/
     sortTasksByStatus() {
       let stat = this.sortStatus;
       console.log(stat);

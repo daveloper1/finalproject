@@ -22,17 +22,15 @@
       v-model="userPassword"
       id="signup-user-password"
       placeholder="Enter a password"
-      v-on:keyup.enter="
-        signUp(this.userName, this.userEmail, this.userPassword)
-      "
+      v-on:keyup.enter="handleSignUp()"
       autocomplete="on"
     />
-    <button
-      class="btn btn-primary input-box text-area"
-      @click="signUp(this.userName, this.userEmail, this.userPassword)"
-    >
+    <button class="btn btn-primary input-box text-area" @click="handleSignUp()">
       Submit
     </button>
+    <div class="show-error alert alert-danger" role="alert" v-if="errorSignUp">
+      {{ this.errorSignUp }}
+    </div>
   </div>
 </template>
 
@@ -47,10 +45,18 @@ export default {
       userName: "",
       userEmail: "",
       userPassword: "",
+      errorSignUp: "",
     };
   },
   methods: {
     ...mapActions(userStore, ["signUp"]),
+    async handleSignUp() {
+      try {
+        await this.signUp(this.userName, this.userEmail, this.userPassword);
+      } catch (error) {
+        this.errorSignUp = error.message;
+      }
+    },
   },
 };
 </script>
