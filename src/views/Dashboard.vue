@@ -1,7 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is the dashboard page</h1>
-    <Logout />
+  <div class="main-dashboard">
+    <h2 class="dashboard-title">Your tasks</h2>
     <ShowTasks />
     <CreateTask />
   </div>
@@ -9,14 +8,12 @@
 <script>
 import { mapActions } from "pinia";
 import taskStore from "@/store/task";
-import Logout from "../components/Logout.vue";
 import ShowTasks from "../components/ShowTasks.vue";
 import CreateTask from "../components/CreateTask.vue";
 
 export default {
   name: "DashboardView",
   components: {
-    Logout: Logout,
     ShowTasks: ShowTasks,
     CreateTask: CreateTask,
   },
@@ -32,3 +29,16 @@ export default {
   },
 };
 </script>
+<style>
+.main-dashboard {
+  background-color: #f1f1f1;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+.dashboard-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+</style>

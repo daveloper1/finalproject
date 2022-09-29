@@ -1,6 +1,12 @@
 <template>
   <div>
-    <button @click.prevent="handleLogout">Logout</button>
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      @click.prevent="handleLogout"
+    >
+      Logout
+    </button>
   </div>
 </template>
 
@@ -13,7 +19,11 @@ export default {
   methods: {
     ...mapActions(userStore, ["signOut"]),
     async handleLogout() {
-      await this.signOut();
+      try {
+        await this.signOut();
+      } catch (error) {
+        alert("Error signing out:", error.message);
+      }
     },
   },
 };

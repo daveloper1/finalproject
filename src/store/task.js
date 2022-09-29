@@ -1,5 +1,5 @@
 // /store/task.js
-
+/* eslint-disable */
 import { defineStore } from "pinia";
 import supabase from "../supabase/index";
 import useUserStore from "@/store/user";
@@ -17,12 +17,18 @@ export default defineStore("tasks", {
       if (error) throw error;
       this.tasks = tasks;
     },
-    async insertTask(newTitle, newStatus) {
+    async insertTask(newTitle, newStatus, taskDescription) {
       const userStore = useUserStore();
-      const { data, error } = await supabase
-        .from("tasks")
-        .insert([{ title: newTitle, user_id: userStore.user.id, is_complete: newStatus }]);
+      const { data, error } = await supabase.from("tasks").insert([
+        {
+          title: newTitle,
+          user_id: userStore.user.id,
+          is_complete: newStatus,
+          description: taskDescription,
+        },
+      ]);
       if (error) throw error;
+      this.tasks.push(data[0]);
     },
     async deleteTask(taskId) {
       const { data, error } = await supabase
@@ -46,6 +52,13 @@ export default defineStore("tasks", {
       const { data, error } = await supabase
         .from("tasks")
         .update({ title: newTitle })
+        .match({ id: taskId });
+      if (error) throw error;
+    },
+    async editDescription(newDescription, taskId) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ description: newDescription })
         .match({ id: taskId });
       if (error) throw error;
     },
