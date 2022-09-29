@@ -55,5 +55,12 @@ export default defineStore("tasks", {
         .match({ id: taskId });
       if (error) throw error;
     },
+    async editDescription(newDescription, taskId) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ description: newDescription })
+        .match({ id: taskId });
+      if (error) throw error;
+    },
   },
 });

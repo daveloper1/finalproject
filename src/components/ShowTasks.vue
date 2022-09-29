@@ -40,6 +40,7 @@
           aria-expanded="false"
           :aria-controls="'t' + task.id.toString()"
         />
+
         <button
           type="button"
           class="btn-close"
@@ -49,9 +50,12 @@
       </div>
       <div class="card-body collapse" :id="'t' + task.id.toString()">
         <h5 class="card-title">Task description</h5>
-        <p class="card-text">
-          {{ task.description }}
-        </p>
+        <input
+          :v-if="task.description != ''"
+          class="task-description"
+          v-model="task.description"
+          @change="handleEditDescription(task.description, task.id)"
+        />
       </div>
     </div>
   </div>
@@ -98,7 +102,14 @@ export default {
         alert("Error editing the task title:", error.message);
       }
     },
-    sortTasksByStatus() {
+    handleEditDescription(newDescription, taskID) {
+      try {
+        this.editDescription(newDescription, taskID);
+      } catch (error) {
+        alert("Error editing the task title:", error.message);
+      }
+    },
+    /*sortTasksByStatus() {
       let stat = this.sortStatus;
       this.tasks.sort(function (a, b) {
         if (a.is_complete < b.is_complete) {
@@ -108,6 +119,18 @@ export default {
           return stat;
         }
         return 0;
+      });
+      this.sortStatus = -this.sortStatus;
+    },*/
+    sortTasksByStatus() {
+      let stat = this.sortStatus;
+      console.log(stat);
+      this.tasks.sort((a, b) => {
+        if (a.is_complete === b.is_complete) {
+          return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;
+        } else {
+          return a.is_complete < b.is_complete ? -stat : stat;
+        }
       });
       this.sortStatus = -this.sortStatus;
     },
@@ -175,7 +198,16 @@ export default {
 .task-title {
   width: 55%;
 }
-
+.task-description {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
 @media only screen and (min-width: 415px) {
   .action-buttons {
     margin: 0 auto;
