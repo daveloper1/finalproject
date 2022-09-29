@@ -37,7 +37,7 @@ export default {
     try {
       await this.fetchUser(); // here we call fetch user
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   },
 };

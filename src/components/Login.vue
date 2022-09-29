@@ -8,6 +8,7 @@
       id="login-user-email"
       placeholder="Enter your email"
       autocomplete="on"
+      v-on:keyup.enter="handleSignIn()"
     />
     <input
       class="input-box text-area"
@@ -22,7 +23,9 @@
     <button class="btn btn-primary input-box text-area" @click="handleSignIn()">
       Login
     </button>
-    <div class="show-error" v-if="errorSignIn">{{ this.errorSignIn }}</div>
+    <div class="show-error alert alert-danger" role="alert" v-if="errorSignIn">
+      {{ this.errorSignIn }}
+    </div>
   </div>
 </template>
 
@@ -45,10 +48,14 @@ export default {
       try {
         await this.signInWithEmail(this.userEmail, this.userPassword);
       } catch (error) {
-        if (error.message == "Invalid login credentials") {
+        if (error.message.toLowerCase() == "invalid login credentials") {
           this.errorSignIn =
             "El nombre de usuario o la contraseña son incorrectos. Inténtelo de nuevo.";
-          setTimeout(() => (this.errorSignIn = ""), 5000);
+        } else if (
+          error.message.toLowerCase() ==
+          "you must provide either an email, phone number, a third-party provider or openid connect."
+        ) {
+          this.errorSignIn = "Es necesario introducir usuario y contraseña.";
         } else {
           this.errorSignIn = error.message;
         }
@@ -70,10 +77,26 @@ export default {
 .input-box {
   margin: 0 auto;
   width: 90%;
+  height: 16%;
   padding-left: 5%;
   border-radius: 5px;
 }
-.input-control:active {
+.input-box:active {
   border: yellow;
+}
+.alert {
+  width: 90%;
+  height: 30%;
+  padding-top: 2%;
+  margin-top: 10px;
+  padding-bottom: 2%;
+}
+.btn-primary {
+  padding: 0;
+}
+@media only screen and (min-width: 844px) {
+  .input-box:focus {
+    border: solid rgb(0, 234, 255);
+  }
 }
 </style>
