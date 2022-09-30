@@ -182,6 +182,14 @@ export default {
   justify-content: space-between;
   background-color: ghostwhite;
 }
+.btn-primary {
+  border-color: #c1802a;
+  background-color: #1e4e4c;
+  --bs-btn-hover-bg: #18b749;
+}
+.btn-primary:hover {
+  background-color: #55afab;
+}
 .btn-check:checked + .btn {
   background-color: #00721e;
   border-color: #0a4200;
