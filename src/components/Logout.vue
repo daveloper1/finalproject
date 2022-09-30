@@ -2,7 +2,7 @@
   <div>
     <button
       type="button"
-      class="btn btn-outline-danger"
+      class="btn btn-outline-danger btn-logout"
       @click.prevent="handleLogout"
     >
       Logout
@@ -29,4 +29,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.btn-logout {
+  background-color: #20214f;
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-color: lightgray;
+}
+</style>

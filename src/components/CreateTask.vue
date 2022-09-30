@@ -1,5 +1,5 @@
 <template>
-  <div class="newtask-container">
+  <div class="newtask-container center">
     <div class="card card-header newtask-card">
       <input
         class="task-title"
@@ -67,14 +67,15 @@ export default {
   align-items: left;
   justify-content: space-around;
   padding: 11px;
+  border-radius: 5px;
+  border-top-style: double;
 }
-.newtask-container:hover {
-  box-shadow: 7px 0px 9px 7px #6398a9;
-}
+
 .newtask-description {
   width: 100%;
   padding: 20px;
 }
+
 .card-text {
   margin-top: 5px;
 }
