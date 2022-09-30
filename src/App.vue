@@ -1,9 +1,12 @@
 <template>
-  <nav class="app-navbar" :class="{ 'login-navbar': user === null }">
-    <img class="app-title" src="./assets/Logo.png" alt="Notice Task Logo" />
+  <nav
+    v-if="user != null"
+    class="app-navbar"
+    :class="{ 'login-navbar': user === null }"
+  >
+    <img class="app-title" src="./assets/logo.png" alt="Notice Task Logo" />
     <Logout class="logout-btn" v-if="user !== null" />
   </nav>
-
   <router-view />
 </template>
 
@@ -45,8 +48,9 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Libre Baskerville;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -70,7 +74,7 @@ body {
   align-items: center;
 }
 .app-title {
-  width: fit-content;
+  width: 215px;
   font-weight: bold;
   font-size: 30px;
   color: #2c3e50;
@@ -85,5 +89,11 @@ body {
 
 .text-area {
   font-size: 17px;
+}
+
+@media only screen and (min-width: 415px) {
+  .app-title {
+    width: 260px;
+  }
 }
 </style>

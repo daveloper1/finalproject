@@ -34,9 +34,7 @@ export default {
   background-color: #f1f1f1;
   height: calc(100vh - 80px);
   overflow: hidden;
-}
-.bg {
-  padding-top: 11%;
+  padding-top: 25%;
   background-image: url("https://images.pexels.com/photos/6193017/pexels-photo-6193017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -50,5 +48,11 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: bold;
+}
+
+@media only screen and (min-width: 415px) {
+  .main-dashboard {
+    padding-top: 14%;
+  }
 }
 </style>

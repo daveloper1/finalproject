@@ -20,9 +20,9 @@
         />
         <label
           v-if="task.is_complete"
-          class="btn btn-outline-primary"
+          class="btn btn-outline-primary btn-done"
           :for="task.id"
-          >DONE!</label
+          >DONE</label
         >
         <label
           v-else
@@ -182,6 +182,13 @@ export default {
   justify-content: space-between;
   background-color: ghostwhite;
 }
+.btn-check:checked + .btn {
+  background-color: #00721e;
+  border-color: #0a4200;
+}
+.btn {
+  width: 100%;
+}
 .btn-pending {
   background-color: rgb(118 118 118 / 60%);
   color: white;
@@ -189,11 +196,12 @@ export default {
 
 .btn-pending,
 .btn-outline-primary {
-  width: 85px;
+  width: 30%;
 }
 .btn-primary {
   width: 35%;
 }
+
 .task-title,
 .task-description {
   width: 55%;
@@ -211,12 +219,23 @@ export default {
   resize: none;
   vertical-align: top;
 }
+
 @media only screen and (min-width: 415px) {
   .action-buttons {
     margin: 0 auto;
     margin-top: 20px;
     width: 60%;
     margin-bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-pending,
+  .btn-outline-primary {
+    width: 34%;
+  }
+  .btn-done {
+    background-color: #00721e;
+    border-color: #0a4200;
   }
   .tasks-container {
     width: 95%;
@@ -227,15 +246,13 @@ export default {
     flex-direction: row;
     align-content: flex-start;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     overflow-y: scroll;
     text-align: justify;
     border-radius: 5px;
   }
-  .tasks-container:hover {
-    box-shadow: 7px 0px 9px 7px #6398a9;
-  }
+
   ::-webkit-scrollbar {
     display: none;
   }
