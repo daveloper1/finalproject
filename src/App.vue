@@ -1,8 +1,9 @@
 <template>
   <nav class="app-navbar" :class="{ 'login-navbar': user === null }">
-    <h1 class="app-title">Notice Task</h1>
+    <img class="app-title" src="./assets/Logo.png" alt="Notice Task Logo" />
     <Logout class="logout-btn" v-if="user !== null" />
   </nav>
+
   <router-view />
 </template>
 
@@ -50,13 +51,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   width: 100%;
+  height: 100%;
 }
 body {
   margin: 0;
 }
 .app-navbar {
+  position: fixed;
+  top: 2%;
+  left: 10%;
   margin: 0 auto;
-  width: 90vw;
+  width: 80%;
   height: 80px;
   display: flex;
   flex-direction: row;

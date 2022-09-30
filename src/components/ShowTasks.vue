@@ -51,7 +51,7 @@
       <div class="card-body collapse" :id="'t' + task.id.toString()">
         <h5 class="card-title">Task description</h5>
         <input
-          :v-if="task.description != ''"
+          type="text"
           class="task-description"
           v-model="task.description"
           @change="handleEditDescription(task.description, task.id)"
@@ -78,7 +78,12 @@ export default {
     ...mapState(taskStore, ["tasks"]),
   },
   methods: {
-    ...mapActions(taskStore, ["deleteTask", "editStatus", "editTitle"]),
+    ...mapActions(taskStore, [
+      "deleteTask",
+      "editStatus",
+      "editTitle",
+      "editDescription",
+    ]),
 
     handleDeleteTask(taskId) {
       try {
@@ -154,6 +159,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   align-content: center;
+  margin: 20px 0 20px 0;
 }
 .tasks-container {
   height: calc(100% - 20rem);
@@ -167,23 +173,32 @@ export default {
   width: 100%;
   max-width: 23rem;
 }
-.btn-pending {
-  background-color: rgb(118 118 118 / 60%);
-  color: white;
-}
+
 .card-header {
   display: flex;
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  background-color: ghostwhite;
 }
+.btn-pending {
+  background-color: rgb(118 118 118 / 60%);
+  color: white;
+}
+
 .btn-pending,
 .btn-outline-primary {
   width: 85px;
 }
-.task-title {
+.btn-primary {
+  width: 35%;
+}
+.task-title,
+.task-description {
   width: 55%;
+  border-radius: 5px;
+  border-color: #d5d5d5;
 }
 .task-description {
   width: 100%;
@@ -194,10 +209,12 @@ export default {
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+  vertical-align: top;
 }
 @media only screen and (min-width: 415px) {
   .action-buttons {
     margin: 0 auto;
+    margin-top: 20px;
     width: 60%;
     margin-bottom: 3%;
   }
@@ -213,6 +230,14 @@ export default {
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: scroll;
+    text-align: justify;
+    border-radius: 5px;
+  }
+  .tasks-container:hover {
+    box-shadow: 7px 0px 9px 7px #6398a9;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
   .card {
     width: 45%;

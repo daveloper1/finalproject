@@ -1,6 +1,6 @@
 <template>
-  <div class="main-dashboard">
-    <h2 class="dashboard-title">Your tasks</h2>
+  <div class="main-dashboard bg">
+    <!--<h2 class="dashboard-title">Your tasks</h2>-->
     <ShowTasks />
     <CreateTask />
   </div>
@@ -34,6 +34,16 @@ export default {
   background-color: #f1f1f1;
   height: calc(100vh - 80px);
   overflow: hidden;
+}
+.bg {
+  padding-top: 11%;
+  background-image: url("https://images.pexels.com/photos/6193017/pexels-photo-6193017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
 }
 .dashboard-title {
   text-align: center;
