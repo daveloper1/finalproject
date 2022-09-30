@@ -28,7 +28,7 @@ export default defineStore("tasks", {
         },
       ]);
       if (error) throw error;
-      this.tasks.push(data[0]);
+      else this.tasks.push(data[0]);
     },
     async deleteTask(taskId) {
       const { data, error } = await supabase
