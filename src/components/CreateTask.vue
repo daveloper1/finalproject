@@ -6,10 +6,12 @@
         type="text"
         v-model="title"
         name="title"
-        placeholder="Task"
+        placeholder="New task title"
         v-on:keyup.enter="handleInsertTask()"
       />
-      <button @click="handleInsertTask()">Create task</button>
+      <button class="btn btn-primary" @click="handleInsertTask()">
+        Create task
+      </button>
     </div>
 
     <div class="card text-bg-light mb-3">
@@ -57,13 +59,17 @@ export default {
 
 <style>
 .newtask-container {
+  margin: 0 auto;
+  margin-top: 2%;
   display: flex;
   flex-flow: column;
   flex-direction: column;
   align-items: left;
   justify-content: space-around;
-  margin: 0 auto;
   padding: 11px;
+}
+.newtask-container:hover {
+  box-shadow: 7px 0px 9px 7px #6398a9;
 }
 .newtask-description {
   width: 100%;
@@ -80,6 +86,7 @@ export default {
   .newtask-container {
     width: 95%;
     margin: 0 auto;
+    margin-top: 2%;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="login-bkgnd">
     <div class="login-container">
-      <h2>LOGO</h2>
+      <img src="../assets/Logo.png" alt="Notice Task Logo" />
       <Login />
       <h2>Sign Up</h2>
       <SignUp />
